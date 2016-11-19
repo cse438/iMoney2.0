@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -68,6 +68,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="didTapLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wnF-LJ-plf"/>
                                     <segue destination="DwV-GY-tyU" kind="show" id="CsP-jc-nQj"/>
                                 </connections>
                             </button>
@@ -91,6 +92,10 @@
                             <constraint firstItem="akV-eu-dto" firstAttribute="trailing" secondItem="CiV-oN-jms" secondAttribute="trailing" id="w2l-lw-oKB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="akV-eu-dto" id="qVS-oO-VUb"/>
+                        <outlet property="passwordField" destination="CiV-oN-jms" id="m1j-aa-j0N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

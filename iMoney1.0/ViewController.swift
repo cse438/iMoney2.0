@@ -11,10 +11,14 @@ import Firebase
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    var ref: FIRDatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        ref = FIRDatabase.database().reference()
        }
     
     override func didReceiveMemoryWarning() {
@@ -22,6 +26,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func didTapLogin(_ sender: Any) {
+        guard let email = self.emailField.text, let password = self.passwordField.text else {
+            return
+        }
+        // Sign user in
+        FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+            guard let user = user, error == nil else {
+                return
+            }
+            
+            self.ref.child("users").child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                // Check if user already exists
+                guard !snapshot.exists() else {
+                    print(user.uid)
+                    return
+                }
+            }) // End of observeSingleEvent
+        }) // End of signIn
+    }
     
 }
 
