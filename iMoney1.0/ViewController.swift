@@ -106,16 +106,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-    
-    func tryQuery() {
-        self.ref.child("user-posts").child((FIRAuth.auth()?.currentUser?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
-            
-            guard snapshot.exists() else {
-                return
-            }
-            let postsDict = snapshot.value as? [String : AnyObject] ?? [:]
-        }) // End of observeSingleEvent
-    }
 
 }
 
